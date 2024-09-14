@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgtre55fv4qm1"]
+
+[ext_resource type="Texture2D" uid="uid://dyj2cusu4hpev" path="res://assets/character_gray.png" id="1_hdy0c"]
+[ext_resource type="Texture2D" uid="uid://bt84epkg4ewgq" path="res://assets/character.png" id="2_cdc2q"]
+
+[node name="AddButton" type="TextureButton"]
+offset_right = 56.0
+offset_bottom = 80.0
+texture_normal = ExtResource("1_hdy0c")
+texture_pressed = ExtResource("1_hdy0c")
+texture_hover = ExtResource("2_cdc2q")
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -6.0
+offset_right = 41.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Add layer"
+fit_content = true

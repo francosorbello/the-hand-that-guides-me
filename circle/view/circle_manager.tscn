@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://6cyx6ald7r3t"]
+
+[ext_resource type="Script" path="res://circle/view/circle_manager.gd" id="1_ybstx"]
+[ext_resource type="PackedScene" uid="uid://d2x4jfmvfgb2p" path="res://circle/circle.tscn" id="2_ptqnl"]
+
+[node name="CircleManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ybstx")
+circle_scene = ExtResource("2_ptqnl")
+start_radius = 50.0
+radius_increment = 50.0

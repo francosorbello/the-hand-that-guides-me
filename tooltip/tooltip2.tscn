@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2qs3o2u4gwpr"]
+
+[ext_resource type="Script" path="res://tooltip/tooltip_2.gd" id="1_5sx8w"]
+
+[sub_resource type="Theme" id="Theme_65dm8"]
+
+[node name="VBoxContainer" type="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 100.0
+offset_bottom = 46.0
+theme = SubResource("Theme_65dm8")
+script = ExtResource("1_5sx8w")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "What made me is:"
+fit_content = true

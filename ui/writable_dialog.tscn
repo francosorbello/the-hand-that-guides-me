@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3kxv3m3kqw6b"]
+
+[ext_resource type="Script" path="res://ui/writable_dialog.gd" id="1_j1oex"]
+
+[node name="ConfirmationDialog" type="ConfirmationDialog"]
+title = ""
+initial_position = 1
+size = Vector2i(300, 150)
+script = ExtResource("1_j1oex")
+titles = Array[String](["What are you proud of?", "What was a difficult decision you made?", "What's a good memory you have?"])
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 292.0
+offset_bottom = 101.0
+
+[connection signal="canceled" from="." to="." method="_on_canceled"]
+[connection signal="confirmed" from="." to="." method="_on_confirmed"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
