@@ -16,8 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4adpl")
 
-[node name="ColorManager" parent="." instance=ExtResource("2_j6bn2")]
-
 [node name="BG" type="ColorRect" parent="."]
 z_index = -4096
 layout_mode = 1
@@ -28,6 +26,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.301961, 0.301961, 0.301961, 1)
 script = ExtResource("2_krwko")
+
+[node name="ColorManager" parent="." instance=ExtResource("2_j6bn2")]
 
 [node name="ConfirmationDialog" parent="." instance=ExtResource("2_f65jh")]
 
@@ -60,9 +60,6 @@ offset_right = 28.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(575, 323)
 
 [connection signal="text_confirmed" from="ConfirmationDialog" to="CircleManager" method="_on_confirmation_dialog_text_confirmed"]
 [connection signal="circle_created" from="CircleManager" to="BG" method="_on_circle_manager_circle_created"]

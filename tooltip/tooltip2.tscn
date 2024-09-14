@@ -5,7 +5,7 @@
 [sub_resource type="Theme" id="Theme_65dm8"]
 
 [node name="VBoxContainer" type="HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(200, 0)
 offset_right = 100.0
 offset_bottom = 46.0
 theme = SubResource("Theme_65dm8")

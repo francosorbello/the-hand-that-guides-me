@@ -10,7 +10,6 @@ func _on_text_edit_text_changed() -> void:
     current_text = $TextEdit.text
 
 func _on_confirmed() -> void:
-    
     if current_text.is_empty():
         return
     emit_signal("text_confirmed", current_text)
@@ -27,5 +26,5 @@ func clear_text():
 
 func _on_visibility_changed() -> void:
     var selected_title = titles[randi() % titles.size()]
-    title = selected_title
+    $TextEdit.placeholder_text = "Hint: "+selected_title
     pass # Replace with function body.
