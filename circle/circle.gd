@@ -8,7 +8,7 @@ var selected_color = Color.WHITE
 var text : String
 
 func _draw() -> void:
-    draw_circle(Vector2.ZERO, max_radius, selected_color)
+    draw_circle(Vector2.ZERO, max_radius, selected_color,true,-1,true)
     pass
 
 func get_random_color() -> Color:

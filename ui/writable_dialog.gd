@@ -10,14 +10,19 @@ func _on_text_edit_text_changed() -> void:
     current_text = $TextEdit.text
 
 func _on_confirmed() -> void:
+    play_ui_sound()
     if current_text.is_empty():
         return
     emit_signal("text_confirmed", current_text)
     clear_text()
     pass # Replace with function body.
 
+func play_ui_sound():
+    $AudioStreamPlayer.play()
+
 func _on_canceled() -> void:
     clear_text()
+    play_ui_sound()
     emit_signal("text_cancelled")
     pass # Replace with function body.
 

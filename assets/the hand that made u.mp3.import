@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bx6xxvgxqtfgq"
+path="res://.godot/imported/the hand that made u.mp3-bc2275e8b421d2a4d24fec277de719ef.mp3str"
+
+[deps]
+
+source_file="res://assets/the hand that made u.mp3"
+dest_files=["res://.godot/imported/the hand that made u.mp3-bc2275e8b421d2a4d24fec277de719ef.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=100.0
+beat_count=0
+bar_beats=4

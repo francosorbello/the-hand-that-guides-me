@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch86f1uwaikjy"]
+[gd_scene load_steps=8 format=3 uid="uid://ch86f1uwaikjy"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4adpl"]
 [ext_resource type="PackedScene" uid="uid://dgtre55fv4qm1" path="res://ui/AddButton.tscn" id="1_h6nhb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dd8gd32amx4ql" path="res://utils/color_manager.tscn" id="2_j6bn2"]
 [ext_resource type="Script" path="res://ui/bg.gd" id="2_krwko"]
 [ext_resource type="PackedScene" uid="uid://6cyx6ald7r3t" path="res://circle/view/circle_manager.tscn" id="4_3ij8m"]
+[ext_resource type="AudioStream" uid="uid://bx6xxvgxqtfgq" path="res://assets/the hand that made u.mp3" id="7_hffg1"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -60,6 +61,10 @@ offset_right = 28.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_hffg1")
+autoplay = true
 
 [connection signal="text_confirmed" from="ConfirmationDialog" to="CircleManager" method="_on_confirmation_dialog_text_confirmed"]
 [connection signal="circle_created" from="CircleManager" to="BG" method="_on_circle_manager_circle_created"]

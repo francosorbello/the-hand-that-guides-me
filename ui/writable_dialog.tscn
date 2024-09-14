@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3kxv3m3kqw6b"]
+[gd_scene load_steps=3 format=3 uid="uid://b3kxv3m3kqw6b"]
 
 [ext_resource type="Script" path="res://ui/writable_dialog.gd" id="1_j1oex"]
+[ext_resource type="AudioStream" uid="uid://cbtnc8upmx2y2" path="res://assets/click_003.ogg" id="2_6omcq"]
 
 [node name="ConfirmationDialog" type="ConfirmationDialog"]
 title = ""
@@ -14,6 +15,9 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 292.0
 offset_bottom = 101.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6omcq")
 
 [connection signal="canceled" from="." to="." method="_on_canceled"]
 [connection signal="confirmed" from="." to="." method="_on_confirmed"]

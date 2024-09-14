@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgtre55fv4qm1"]
+[gd_scene load_steps=5 format=3 uid="uid://dgtre55fv4qm1"]
 
 [ext_resource type="Texture2D" uid="uid://dyj2cusu4hpev" path="res://assets/character_gray.png" id="1_hdy0c"]
 [ext_resource type="Texture2D" uid="uid://bt84epkg4ewgq" path="res://assets/character.png" id="2_cdc2q"]
+[ext_resource type="AudioStream" uid="uid://cbtnc8upmx2y2" path="res://assets/click_003.ogg" id="3_5k74c"]
+[ext_resource type="Script" path="res://ui/add_button.gd" id="3_kahug"]
 
 [node name="AddButton" type="TextureButton"]
 offset_right = 56.0
@@ -10,6 +12,7 @@ texture_normal = ExtResource("1_hdy0c")
 texture_pressed = ExtResource("1_hdy0c")
 texture_hover = ExtResource("2_cdc2q")
 stretch_mode = 5
+script = ExtResource("3_kahug")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -27,3 +30,8 @@ grow_vertical = 0
 bbcode_enabled = true
 text = "[center]Add layer[/center]"
 fit_content = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5k74c")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
