@@ -1,0 +1,14 @@
+[gd_scene load_steps=9 format=3 uid="uid://s4uf80lw8lm3"]
+
+[ext_resource type="Script" path="res://note_player/note_player.gd" id="1_0blwq"]
+[ext_resource type="AudioStream" uid="uid://bhq2a6ejmdb48" path="res://assets/notes/c.mp3" id="2_synqn"]
+[ext_resource type="AudioStream" uid="uid://cqd566petxwv7" path="res://assets/notes/d.mp3" id="3_2ed8b"]
+[ext_resource type="AudioStream" uid="uid://b46ysuadoefvb" path="res://assets/notes/e.mp3" id="4_3i7ge"]
+[ext_resource type="AudioStream" uid="uid://cfu80v82i83w8" path="res://assets/notes/f.mp3" id="5_65nmw"]
+[ext_resource type="AudioStream" uid="uid://b2heshf80echh" path="res://assets/notes/g.mp3" id="6_aih25"]
+[ext_resource type="AudioStream" uid="uid://bmqvfj8eyrcxq" path="res://assets/notes/a.mp3" id="7_8dbbh"]
+[ext_resource type="AudioStream" uid="uid://cpmyxdvc0jmfh" path="res://assets/notes/b.mp3" id="8_14lr6"]
+
+[node name="NotePlayer" type="AudioStreamPlayer"]
+script = ExtResource("1_0blwq")
+notes = Array[AudioStream]([ExtResource("2_synqn"), ExtResource("3_2ed8b"), ExtResource("4_3i7ge"), ExtResource("5_65nmw"), ExtResource("6_aih25"), ExtResource("7_8dbbh"), ExtResource("8_14lr6")])

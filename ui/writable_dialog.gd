@@ -10,11 +10,12 @@ func _on_text_edit_text_changed() -> void:
     current_text = $TextEdit.text
 
 func _on_confirmed() -> void:
-    play_ui_sound()
     if current_text.is_empty():
+        play_ui_sound()
         return
     emit_signal("text_confirmed", current_text)
     clear_text()
+    $NotePlayer.play_random_note()
     pass # Replace with function body.
 
 func play_ui_sound():
