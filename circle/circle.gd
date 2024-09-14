@@ -45,16 +45,14 @@ func _on_mouse_exited() -> void:
     TooltipManager.hide_tooltip()
     pass # Replace with function body.
 
-func show_circle_tooltip() -> void:
-    # var tooltip = $Tooltip as Tooltip2
+func show_circle_tooltip() -> Vector2:
+    var tooltip = $Tooltip as Tooltip2
     
-    # tooltip.global_position = global_position
-    # tooltip.position = Vector2(0,-max_radius/2); 
+    tooltip.global_position = global_position
+    return Vector2(0,-max_radius);
 
-    # tooltip.show_tooltip(text)
-    # tooltip.follow_mouse = false
-
-    pass # Replace with function body.
+func get_circle_tooltip_position() -> Vector2:
+    return Vector2(0,-max_radius)
 
 func hide_circle_tooltip() -> void:
     pass

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqvfw57vmu3jf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfhrb"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+bg_color = Color(0, 0, 0, 0.8)
+
+[node name="ScreenshotTooltip" type="RichTextLabel"]
+offset_right = 268.0
+offset_bottom = 42.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kfhrb")
+text = "asdfasdfasdf"
+fit_content = true
