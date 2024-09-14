@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8ks3p3lxhuul"]
+
+[ext_resource type="Script" path="res://screenshot/save_screenshot.gd" id="1_of7oq"]
+
+[node name="SaveScreenshot" type="Node"]
+script = ExtResource("1_of7oq")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+initial_position = 1
+size = Vector2i(345, 300)
+access = 2
+use_native_dialog = true
+
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

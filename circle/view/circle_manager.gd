@@ -1,5 +1,5 @@
 extends Control
-
+class_name CircleManager
 @export var circle_scene : PackedScene
 @export var start_radius : float
 @export var radius_increment : float

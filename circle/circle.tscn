@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2x4jfmvfgb2p"]
+[gd_scene load_steps=3 format=3 uid="uid://d2x4jfmvfgb2p"]
 
 [ext_resource type="Script" path="res://circle/circle.gd" id="1_4c3ye"]
+[ext_resource type="PackedScene" uid="uid://b2qs3o2u4gwpr" path="res://tooltip/tooltip2.tscn" id="2_4kfao"]
 
 [node name="Circle" type="Control"]
 layout_mode = 3
@@ -12,6 +13,10 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4c3ye")
+tooltip_scene = ExtResource("2_4kfao")
+
+[node name="Tooltip" parent="." instance=ExtResource("2_4kfao")]
+layout_mode = 0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
