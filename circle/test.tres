@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CircleRes" load_steps=2 format=3 uid="uid://dg1aavr2qbil8"]
+
+[ext_resource type="Script" path="res://circle/circle_res.gd" id="1_tw4d1"]
+
+[resource]
+script = ExtResource("1_tw4d1")
+radius = 0.0
+comment = ""
