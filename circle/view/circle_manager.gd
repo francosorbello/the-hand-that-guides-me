@@ -8,7 +8,6 @@ var current_visibility_index : int = 0
 var current_radius : float = start_radius
 var circles : Array[Circle] = []
 
-@export var circle_container : Node
 @export var color_manager : ColorManager
 
 signal circle_created(circle : Circle)

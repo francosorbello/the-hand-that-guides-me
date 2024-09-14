@@ -25,12 +25,12 @@ func set_radius(min_r : float, max_r):
 func _process(_delta: float) -> void:
     if not mouse_inside && inside_circle():
         mouse_inside = true
-        # mouse_entered_circle.emit()
         mouse_entered.emit()
     else:
         if mouse_inside && not inside_circle():
             mouse_inside = false
             mouse_exited.emit()
+
 func inside_circle() -> bool:
     var inside_max = get_global_mouse_position().distance_to(global_position) < max_radius
     var inside_min = get_global_mouse_position().distance_to(global_position) > min_radius

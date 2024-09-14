@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch86f1uwaikjy"]
+[gd_scene load_steps=9 format=3 uid="uid://ch86f1uwaikjy"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4adpl"]
 [ext_resource type="PackedScene" uid="uid://dgtre55fv4qm1" path="res://ui/AddButton.tscn" id="1_h6nhb"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dd8gd32amx4ql" path="res://utils/color_manager.tscn" id="2_j6bn2"]
 [ext_resource type="Script" path="res://ui/bg.gd" id="2_krwko"]
 [ext_resource type="PackedScene" uid="uid://6cyx6ald7r3t" path="res://circle/view/circle_manager.tscn" id="4_3ij8m"]
-[ext_resource type="AudioStream" uid="uid://bx6xxvgxqtfgq" path="res://assets/the hand that made u.mp3" id="7_hffg1"]
+[ext_resource type="PackedScene" uid="uid://cb5hfup1d75tj" path="res://camera/player_camera.tscn" id="8_47et2"]
+[ext_resource type="AudioStream" uid="uid://drnsrjpajw1f" path="res://assets/Do - Fa interestelar.mp3" id="8_e71v0"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -17,39 +18,72 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4adpl")
 
-[node name="BG" type="ColorRect" parent="."]
-z_index = -4096
+[node name="BG" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[node name="SubViewport" type="SubViewport" parent="BG"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="BG" type="ColorRect" parent="BG/SubViewport"]
+z_index = -4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.145533, 0.29925, 0.524508, 1)
 script = ExtResource("2_krwko")
 
-[node name="ColorManager" parent="." instance=ExtResource("2_j6bn2")]
+[node name="Camera2D" type="Camera2D" parent="BG/SubViewport"]
+position = Vector2(576, 324)
 
-[node name="ConfirmationDialog" parent="." instance=ExtResource("2_f65jh")]
-
-[node name="CircleContainer" type="Control" parent="."]
+[node name="Circles" type="SubViewportContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CircleManager" parent="." node_paths=PackedStringArray("circle_container", "color_manager") instance=ExtResource("4_3ij8m")]
-layout_mode = 1
-circle_container = NodePath("../CircleContainer")
-color_manager = NodePath("../ColorManager")
+[node name="SubViewport" type="SubViewport" parent="Circles"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
-[node name="AddButton" parent="." instance=ExtResource("1_h6nhb")]
-z_index = 10
+[node name="PlayerCamera" parent="Circles/SubViewport" instance=ExtResource("8_47et2")]
+
+[node name="CircleManager" parent="Circles/SubViewport" node_paths=PackedStringArray("color_manager") instance=ExtResource("4_3ij8m")]
+offset_top = -8.0
+offset_bottom = -8.0
+color_manager = NodePath("../../../ColorManager")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(576, 324)
+
+[node name="AddButton" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_h6nhb")]
+z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -62,10 +96,14 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorManager" parent="." instance=ExtResource("2_j6bn2")]
+
+[node name="ConfirmationDialog" parent="." instance=ExtResource("2_f65jh")]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_hffg1")
+stream = ExtResource("8_e71v0")
 autoplay = true
 
-[connection signal="text_confirmed" from="ConfirmationDialog" to="CircleManager" method="_on_confirmation_dialog_text_confirmed"]
-[connection signal="circle_created" from="CircleManager" to="BG" method="_on_circle_manager_circle_created"]
-[connection signal="pressed" from="AddButton" to="." method="_on_button_pressed"]
+[connection signal="circle_created" from="Circles/SubViewport/CircleManager" to="BG/SubViewport/BG" method="_on_circle_manager_circle_created"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/AddButton" to="." method="_on_button_pressed"]
+[connection signal="text_confirmed" from="ConfirmationDialog" to="Circles/SubViewport/CircleManager" method="_on_confirmation_dialog_text_confirmed"]
