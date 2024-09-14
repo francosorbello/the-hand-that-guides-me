@@ -4,14 +4,14 @@ class_name Circle
 var min_radius: float = 0
 var max_radius: float = 0
 var mouse_inside : bool = false
-var selected_color = get_random_color()
+var selected_color = Color.WHITE
 var text : String
 
 func _draw() -> void:
     draw_circle(Vector2.ZERO, max_radius, selected_color)
     pass
 
-func get_random_color():
+func get_random_color() -> Color:
     return Color(randf(), randf(), randf())
 
 func set_text(_text : String):

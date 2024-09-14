@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd8gd32amx4ql"]
+
+[ext_resource type="Script" path="res://utils/color_manager.gd" id="1_pf07e"]
+
+[node name="ColorManager" type="Node"]
+script = ExtResource("1_pf07e")
+palette = Array[Color]([Color(0.768627, 0.694118, 0.682353, 1), Color(0.705882, 0.678431, 0.639216, 1), Color(0.74902, 0.709804, 0.619608, 1), Color(0.792157, 0.717647, 0.635294, 1), Color(0.521569, 0.529412, 0.52549, 1)])

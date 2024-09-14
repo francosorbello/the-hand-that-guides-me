@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch86f1uwaikjy"]
+[gd_scene load_steps=7 format=3 uid="uid://ch86f1uwaikjy"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4adpl"]
 [ext_resource type="PackedScene" uid="uid://dgtre55fv4qm1" path="res://ui/AddButton.tscn" id="1_h6nhb"]
 [ext_resource type="PackedScene" uid="uid://b3kxv3m3kqw6b" path="res://ui/writable_dialog.tscn" id="2_f65jh"]
+[ext_resource type="PackedScene" uid="uid://dd8gd32amx4ql" path="res://utils/color_manager.tscn" id="2_j6bn2"]
+[ext_resource type="Script" path="res://ui/bg.gd" id="2_krwko"]
 [ext_resource type="PackedScene" uid="uid://6cyx6ald7r3t" path="res://circle/view/circle_manager.tscn" id="4_3ij8m"]
 
 [node name="Main" type="Control"]
@@ -13,6 +15,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4adpl")
+
+[node name="ColorManager" parent="." instance=ExtResource("2_j6bn2")]
+
+[node name="BG" type="ColorRect" parent="."]
+z_index = -4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.301961, 0.301961, 0.301961, 1)
+script = ExtResource("2_krwko")
 
 [node name="ConfirmationDialog" parent="." instance=ExtResource("2_f65jh")]
 
@@ -26,9 +41,10 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CircleManager" parent="." node_paths=PackedStringArray("circle_container") instance=ExtResource("4_3ij8m")]
+[node name="CircleManager" parent="." node_paths=PackedStringArray("circle_container", "color_manager") instance=ExtResource("4_3ij8m")]
 layout_mode = 1
 circle_container = NodePath("../CircleContainer")
+color_manager = NodePath("../ColorManager")
 
 [node name="AddButton" parent="." instance=ExtResource("1_h6nhb")]
 z_index = 10
@@ -49,4 +65,5 @@ grow_vertical = 2
 position = Vector2(575, 323)
 
 [connection signal="text_confirmed" from="ConfirmationDialog" to="CircleManager" method="_on_confirmation_dialog_text_confirmed"]
+[connection signal="circle_created" from="CircleManager" to="BG" method="_on_circle_manager_circle_created"]
 [connection signal="pressed" from="AddButton" to="." method="_on_button_pressed"]

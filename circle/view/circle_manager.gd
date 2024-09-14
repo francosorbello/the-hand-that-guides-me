@@ -9,6 +9,9 @@ var current_radius : float = start_radius
 var circles : Array[Circle] = []
 
 @export var circle_container : Node
+@export var color_manager : ColorManager
+
+signal circle_created(circle : Circle)
 
 func _ready() -> void:
     current_radius = start_radius
@@ -20,12 +23,14 @@ func spawn_circle(text : String):
     circle.set_radius(current_radius, current_radius+radius_increment)
     circle.z_index = current_visibility_index
     circle.set_text(text)
+    circle.selected_color = color_manager.get_color()
     
     current_radius = current_radius+radius_increment 
     current_visibility_index -= 1
     
     # circle_container.add_child(circle)
     add_child(circle)
+    circle_created.emit(circle)
     
     circles.append(circle)
 
