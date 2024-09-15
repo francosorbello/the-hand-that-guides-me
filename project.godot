@@ -21,12 +21,11 @@ TooltipManager="*res://tooltip/tooltip_manager.tscn"
 
 [display]
 
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/mode="canvas_items"
 
 [gui]
 
-theme/custom_font="res://assets/IMFellDWPica-Regular.ttf"
+theme/custom_font="res://assets/Inter-Regular.ttf"
 
 [input]
 

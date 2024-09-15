@@ -31,9 +31,6 @@ func spawn_circle(text : String):
     add_child(circle)
     circles.append(circle)
     circle_created.emit(circle)
-    
-
-
 
 func _on_confirmation_dialog_text_confirmed(text:String) -> void:
     spawn_circle(text)

@@ -10,6 +10,7 @@ func _on_file_dialog_dir_selected(dir:String) -> void:
 
 func _on_button_pressed() -> void:
     # $FileDialog.popup()
+    TooltipManager.hide_tooltip()
     download_on_web()
 
 func _on_file_dialog_file_selected(path:String) -> void:
