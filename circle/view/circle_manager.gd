@@ -29,9 +29,9 @@ func spawn_circle(text : String):
     
     # circle_container.add_child(circle)
     add_child(circle)
+    circles.append(circle)
     circle_created.emit(circle)
     
-    circles.append(circle)
 
 
 
