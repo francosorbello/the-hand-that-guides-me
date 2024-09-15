@@ -156,8 +156,9 @@ titles = Array[String](["What are you proud of?", "What was a difficult decision
 stream = ExtResource("8_e71v0")
 autoplay = true
 
-[node name="SaveScreenshot" parent="." node_paths=PackedStringArray("viewport") instance=ExtResource("6_ky4er")]
+[node name="SaveScreenshot" parent="." node_paths=PackedStringArray("viewport", "screenshot_tooltip_manager") instance=ExtResource("6_ky4er")]
 viewport = NodePath("../MainViewport/SubViewport")
+screenshot_tooltip_manager = NodePath("../MainViewport/SubViewport/Circles/SubViewport/ScreenshotTooltipManager")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="SaveScreenshot" method="_on_button_pressed"]
 [connection signal="circle_created" from="MainViewport/SubViewport/Circles/SubViewport/CircleManager" to="MainViewport/SubViewport/BG/SubViewport/BG" method="_on_circle_manager_circle_created"]
