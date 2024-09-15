@@ -1,4 +1,5 @@
 extends Control
+class_name ScreenshotTooltipManager
 
 @export var tooltip_scene : PackedScene
 @export var circle_manager : CircleManager
@@ -6,6 +7,7 @@ extends Control
 var tooltips_active : bool = false
 
 func toggle_tooltip_screenshot() -> void:
+    print(tooltips_active)
     if tooltips_active:
         for tooltip in get_children():
             tooltip.queue_free()
