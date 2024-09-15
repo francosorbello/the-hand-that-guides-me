@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2iyco0sfmy2f"]
+
+[ext_resource type="Texture2D" uid="uid://dqkcjvila6y3a" path="res://assets/icons/audioOn.png" id="1_04ras"]
+[ext_resource type="Script" path="res://ui/sound_button.gd" id="2_3j7jk"]
+
+[node name="SoundButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("1_04ras")
+flat = true
+icon_alignment = 1
+script = ExtResource("2_3j7jk")
+muted_color = Color(0.961518, 4.45209e-06, 9.62615e-07, 1)
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

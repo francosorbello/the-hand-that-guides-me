@@ -1,11 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch86f1uwaikjy"]
+[gd_scene load_steps=16 format=3 uid="uid://ch86f1uwaikjy"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4adpl"]
 [ext_resource type="PackedScene" uid="uid://dgtre55fv4qm1" path="res://ui/AddButton.tscn" id="1_h6nhb"]
+[ext_resource type="Script" path="res://tutorial.gd" id="2_d0nos"]
 [ext_resource type="PackedScene" uid="uid://b3kxv3m3kqw6b" path="res://ui/writable_dialog.tscn" id="2_f65jh"]
+[ext_resource type="Texture2D" uid="uid://cpg5luxdqg8l" path="res://assets/icons/save.png" id="2_g8ohw"]
 [ext_resource type="PackedScene" uid="uid://dd8gd32amx4ql" path="res://utils/color_manager.tscn" id="2_j6bn2"]
+[ext_resource type="PackedScene" uid="uid://b2iyco0sfmy2f" path="res://ui/sound_button.tscn" id="2_kqbtn"]
 [ext_resource type="Script" path="res://ui/bg.gd" id="2_krwko"]
 [ext_resource type="PackedScene" uid="uid://6cyx6ald7r3t" path="res://circle/view/circle_manager.tscn" id="4_3ij8m"]
+[ext_resource type="Texture2D" uid="uid://qsdj4xnrp1qr" path="res://assets/icons/information.png" id="4_cjxov"]
 [ext_resource type="Script" path="res://ui/screenshot_tooltip_manager.gd" id="5_0nf8d"]
 [ext_resource type="PackedScene" uid="uid://cqvfw57vmu3jf" path="res://screenshot/screenshot_tooltip.tscn" id="6_7tlyh"]
 [ext_resource type="PackedScene" uid="uid://c8ks3p3lxhuul" path="res://screenshot/save_screenshot.tscn" id="6_ky4er"]
@@ -21,18 +25,110 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4adpl")
 
+[node name="Tutorial" type="CanvasLayer" parent="."]
+
+[node name="Tutorial" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_d0nos")
+
+[node name="BG" type="ColorRect" parent="Tutorial/Tutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.75
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.870588)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial/Tutorial/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="How to play" type="RichTextLabel" parent="Tutorial/Tutorial/BG/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]How to play[/center]
+"
+fit_content = true
+
+[node name="how to play text" type="RichTextLabel" parent="Tutorial/Tutorial/BG/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "We are the choices we make. Reflect on your journey so far, and write down the layers of your personal story."
+fit_content = true
+
+[node name="Controls" type="RichTextLabel" parent="Tutorial/Tutorial/BG/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Controls[/center]
+"
+fit_content = true
+
+[node name="Controls text" type="RichTextLabel" parent="Tutorial/Tutorial/BG/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Click the character to add a new layer to your story.
+Zoom in and out with the scroll wheel.
+Press tab to see what you have written so far."
+fit_content = true
+
+[node name="Controls2" type="RichTextLabel" parent="Tutorial/Tutorial/BG/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Screenshots[/center]
+"
+fit_content = true
+
+[node name="Controls text2" type="RichTextLabel" parent="Tutorial/Tutorial/BG/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Use the \"save\" button in the top right corner to take a screenshot of your journey and share it with your friends!"
+fit_content = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-anchors_preset = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -85.0
-offset_top = 13.0
-offset_right = -7.0
-offset_bottom = 42.0
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = 16.0
 grow_horizontal = 0
-text = "Screenshot"
+grow_vertical = 2
+
+[node name="Screenshot" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Take a screenshot"
+icon = ExtResource("2_g8ohw")
+flat = true
+icon_alignment = 1
+
+[node name="TutorialBtn" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("4_cjxov")
+flat = true
+icon_alignment = 1
+
+[node name="SoundButton" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_kqbtn")]
+layout_mode = 2
+tooltip_text = "Enable or disable the audio"
 
 [node name="MainViewport" type="SubViewportContainer" parent="."]
 layout_mode = 1
@@ -160,7 +256,8 @@ autoplay = true
 viewport = NodePath("../MainViewport/SubViewport")
 screenshot_tooltip_manager = NodePath("../MainViewport/SubViewport/Circles/SubViewport/ScreenshotTooltipManager")
 
-[connection signal="pressed" from="CanvasLayer/Button" to="SaveScreenshot" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Screenshot" to="SaveScreenshot" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/TutorialBtn" to="Tutorial/Tutorial" method="_on_tutorial_btn_pressed"]
 [connection signal="circle_created" from="MainViewport/SubViewport/Circles/SubViewport/CircleManager" to="MainViewport/SubViewport/BG/SubViewport/BG" method="_on_circle_manager_circle_created"]
 [connection signal="pressed" from="MainViewport/SubViewport/AddButton/SubViewport/AddButton" to="." method="_on_button_pressed"]
 [connection signal="text_confirmed" from="ConfirmationDialog" to="MainViewport/SubViewport/Circles/SubViewport/CircleManager" method="_on_confirmation_dialog_text_confirmed"]

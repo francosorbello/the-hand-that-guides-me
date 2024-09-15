@@ -4,6 +4,8 @@ class_name Tooltip
 func _ready():
     hide_tooltip()
 
+var tooltip_enabled = true
+
 func show_tooltip(text : String):
     $RichTextLabel.text = text
     visible = true
@@ -12,12 +14,15 @@ func show_tooltip(text : String):
 func hide_tooltip():
     visible = false
 
+func set_enabled(enabled: bool):
+    tooltip_enabled = enabled
+
 func _physics_process(_delta: float) -> void:
-    if visible:
+    if visible && tooltip_enabled:
         global_position = get_global_mouse_position() + Vector2(20, -10)
 
 func _draw():
-    if visible:
+    if visible && tooltip_enabled:
         var tooltip_rect = get_transform()
         print(tooltip_rect.size)
         var downLeftPoint = Vector2(-tooltip_rect.size.y,0);

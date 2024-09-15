@@ -28,6 +28,12 @@ func download_on_web():
     JavaScriptBridge.download_buffer(result_buffer, "screenshot.png")
 
 func _get_image():
-    screenshot_tooltip_manager.toggle_tooltip_screenshot()
+    #enable tooltips for camera
+    screenshot_tooltip_manager.clear_and_show()
     await get_tree().create_timer(0.5).timeout
-    return viewport.get_texture().get_image() 
+    
+    var img = viewport.get_texture().get_image()
+    # disable tooltips
+    screenshot_tooltip_manager.toggle_tooltip_screenshot()
+    return img
+
